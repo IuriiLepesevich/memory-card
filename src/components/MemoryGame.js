@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Score from "./Score";
 import CardBoard from "./CardBoard";
 import { cardsArray, shuffleArray } from "./cardCollection";
+import CardAdder from "./CardAdder";
 
 const key = "7AoNKC3KH2nPqSS8fCD3bdDCsZUrIqfp";
 
@@ -10,13 +11,41 @@ export default function MemoryGame() {
   const [scoreBest, setScoreBest] = useState(0);
   const [scoreCurrent, setScoreCurrent] = useState(0);
   const [cards, setCards] = useState(shuffleArray(cardsArray));
+  const [newCard, setNewCard] = useState("");
 
-  function removeCard(e) {
-    console.log(e.currentTarget);
-    // setCards(cards.filter((card) => card.name !== e.currentTarget.id));
+  function addNewCard() {
+    if (!newCard || cards.some((card) => card.name === newCard)) return;
+    try {
+      fetch(
+        `https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${newCard}`,
+        { mode: "cors" }
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          setCards(
+            cards.concat({
+              name: newCard,
+              imageUrl: response.data.images.original.url,
+              clicked: false,
+            })
+          );
+        });
+    } catch (err) {
+      console.log(err);
+    }
+
+    setNewCard("");
+  }
+
+  function removeCard(name) {
+    setCards(cards.filter((card) => card.name !== name));
   }
 
   function handleClick(e) {
+    if (!e.currentTarget.id) {
+      removeCard(e.currentTarget.className);
+      return;
+    }
     const isClickedTwice = cards.find(
       (card) => card.name === e.currentTarget.id
     ).clicked;
@@ -83,13 +112,17 @@ export default function MemoryGame() {
 
   return (
     <div className="MemoryGame">
-      <h1>Memory Game</h1>
-      <Score current={scoreCurrent} best={scoreBest} />
-      <CardBoard
-        cards={cards}
-        handleClick={handleClick}
-        removeCard={removeCard}
-      />
+      <div></div>
+      <div className="mainGame">
+        <h1>Memory Game</h1>
+        <Score current={scoreCurrent} best={scoreBest} />
+        <CardBoard
+          cards={cards}
+          handleClick={handleClick}
+          removeCard={removeCard}
+        />
+      </div>
+      <CardAdder handleChange={setNewCard} addNewCard={addNewCard} />
     </div>
   );
 }

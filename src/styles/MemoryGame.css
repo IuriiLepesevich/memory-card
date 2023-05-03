@@ -1,7 +1,12 @@
 .MemoryGame {
-  border-radius: 2rem;
   margin: 10px auto;
-  width: 900px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.MemoryGame .mainGame {
+  border-radius: 2rem;
+  width: 950px;
   display: flex;
   flex-direction: column;
   gap: 20px;

@@ -1,6 +1,14 @@
 .Card {
-  border: 1px solid black;
-  height: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 1rem;
+  background-color: rgba(255, 107, 54, 0.774);
+}
+
+.Card .imageHolder {
+  height: 180px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -10,4 +18,18 @@
   transform: scale(1.1);
   box-shadow: 0 0 30px 3px rgb(1, 255, 22);
   transition: all 200ms ease-out;
+}
+
+.Card > button {
+  width: 70%;
+  align-self: center;
+  font-size: 1.3rem;
+  background-color: black;
+  border: none;
+  border-radius: 1rem;
+  color: white;
+}
+
+.Card > button:hover {
+  background-color: blueviolet;
 }

@@ -39,26 +39,6 @@ const cardsArray = [
     imageUrl: "",
     clicked: false,
   },
-  {
-    name: "9",
-    imageUrl: "",
-    clicked: false,
-  },
-  {
-    name: "10",
-    imageUrl: "",
-    clicked: false,
-  },
-  {
-    name: "11",
-    imageUrl: "",
-    clicked: false,
-  },
-  {
-    name: "12",
-    imageUrl: "",
-    clicked: false,
-  },
 ];
 
 function shuffleArray(array) {
