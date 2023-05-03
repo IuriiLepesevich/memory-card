@@ -15,9 +15,6 @@ export default function Card(props) {
       }}
     >
       {name}
-      <button type="button" onClick={removeCard}>
-        Remove
-      </button>
     </div>
   );
 }
