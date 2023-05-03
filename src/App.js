@@ -1,9 +1,10 @@
-import './App.css';
+import "./styles/App.css";
+import MemoryGame from "./components/MemoryGame";
 
 function App() {
   return (
     <div className="App">
-      
+      <MemoryGame />
     </div>
   );
 }
