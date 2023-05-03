@@ -13,8 +13,6 @@ export default function Card(props) {
       style={{
         backgroundImage: `url(${imageUrl})`,
       }}
-    >
-      {name}
-    </div>
+    ></div>
   );
 }

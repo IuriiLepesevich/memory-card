@@ -6,6 +6,8 @@
   background-size: cover;
 }
 
-.clicked {
-  color: red;
+.Card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px 3px rgb(1, 255, 22);
+  transition: all 200ms ease-out;
 }

@@ -1,7 +1,12 @@
 .MemoryGame {
-  border: 3px dotted black;
+  border-radius: 2rem;
   margin: 10px auto;
-  width: 800px;
+  width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 40px;
+  background-color: #f6e3ba;
 }
 
 h1 {
