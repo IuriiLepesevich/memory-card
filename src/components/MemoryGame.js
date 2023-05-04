@@ -81,27 +81,26 @@ export default function MemoryGame() {
     if (scoreCurrent > scoreBest) setScoreBest(scoreCurrent);
   }, [scoreCurrent]);
 
-  const fetchImages = () => {
-    const fetchArray = [];
-    cards.forEach((card) => {
-      fetchArray.push(
-        fetch(
-          `https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${card.name}`,
-          { mode: "cors" }
-        )
-      );
-    });
-    Promise.all(fetchArray)
-      .then((result) => Promise.all(result.map((res) => res.json())))
-      .then((response) => {
-        setCards(
-          cards.map((card, index) => ({
-            name: card.name,
-            imageUrl: response[index].data.images.original.url,
-            clicked: card.clicked,
-          }))
-        );
-      });
+  const fetchImages = async () => {
+    setCards(
+      await Promise.all(
+        cards.map(async (card) => {
+          try {
+            await fetch(
+              `https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${card.name}`,
+              { mode: "cors" }
+            )
+              .then((response) => response.json())
+              .then((response) => {
+                card.imageUrl = response.data.images.original.url;
+              });
+          } catch (err) {
+            console.error(err);
+          }
+          return card;
+        })
+      )
+    );
   };
 
   useEffect(() => {
