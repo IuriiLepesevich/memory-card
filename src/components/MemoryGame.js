@@ -33,8 +33,6 @@ export default function MemoryGame() {
     } catch (err) {
       console.log(err);
     }
-
-    setNewCard("");
   }
 
   function removeCard(name) {
