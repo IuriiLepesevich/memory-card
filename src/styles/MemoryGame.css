@@ -6,7 +6,7 @@
 
 .MemoryGame .mainGame {
   border-radius: 2rem;
-  width: 950px;
+  width: 1050px;
   display: flex;
   flex-direction: column;
   gap: 20px;
