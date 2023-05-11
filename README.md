@@ -1,6 +1,6 @@
 # Memory Game
 
-This project was build during TheOdinProject curriculum. Idea of this project is to work with React compinents / Hooks. To play this game you should click on frames. Clicking on them - will increment your score. Clickiong on the same frame twice, will reset you current score (however your record will stay the same). You can add new cards by name (there cannot be added 2 cards with the same name). You can remove cards form game.
+This project was built during The Odin Project curriculum. Idea of this project is to work with React components / Hooks. To play this game you should click on frames. Clicking on them - will increment your score. Clickiong on the same frame twice, will reset you current score (however your record will stay the same). You can add new cards by name (there cannot be added 2 cards with the same name). You can remove cards form game.
 ### Images / GIFs are generated with giphy API.
 
 ## [Live Demo](https://iuriilepesevich.github.io/memory-card/)
